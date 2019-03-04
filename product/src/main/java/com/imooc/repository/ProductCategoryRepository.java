@@ -9,6 +9,8 @@ import java.util.List;
  * Created by dell on 2019/1/9.
  */
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory,Integer> {
+
+
     List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList);
 
 }
