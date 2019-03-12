@@ -96,17 +96,17 @@
 				<version>${product-commom.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>com.imooc</groupId>
-				<artifactId>product-common</artifactId>
-				<version>${product-client.version}</version>
-			</dependency>
+			<!--<dependency>-->
+				<!--<groupId>com.imooc</groupId>-->
+				<!--<artifactId>product-common</artifactId>-->
+				<!--<version>${product-client.version}</version>-->
+			<!--</dependency>-->
 
-			<dependency>
-				<groupId>com.imooc</groupId>
-				<artifactId>order-common</artifactId>
-				<version>${order-common.version}</version>
-			</dependency>
+			<!--<dependency>-->
+				<!--<groupId>com.imooc</groupId>-->
+				<!--<artifactId>order-common</artifactId>-->
+				<!--<version>${order-common.version}</version>-->
+			<!--</dependency>-->
 		</dependencies>
 	</dependencyManagement>
 

@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://luolidong@code.zm.shzhanmeng.com/data-analysis/config-repo.git
+          username: luolidong
+          password: luolidong666
+  rabbitmq:
+    host: develop
+    port: 5672
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#curl -v -X post "http://localhost:8080/actuator/bus-refresh" 刷新url
