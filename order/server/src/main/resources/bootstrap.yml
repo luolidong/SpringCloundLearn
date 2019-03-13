@@ -8,9 +8,6 @@ spring:
       discovery:
         enabled: true
         service-id: CONFIG
-  rabbitmq:
-    host: develop
-    port: 5672
 eureka:
   client:
     service-url:
