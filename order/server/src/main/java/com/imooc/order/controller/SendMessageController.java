@@ -1,5 +1,6 @@
 package com.imooc.order.controller;
 
+import com.imooc.order.dto.CartDTO;
 import com.imooc.order.message.StreamClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
@@ -19,8 +20,10 @@ public class SendMessageController {
 
     @GetMapping("/sendMessage")
     public void process() {
+        CartDTO cartDTO = new CartDTO();
+        cartDTO.setProductId("1234567");
         String message = "now:" + new Date();
-        streamClient.output().send(MessageBuilder.withPayload(message).build());
+        streamClient.output().send(MessageBuilder.withPayload(cartDTO).build());
     }
 
 }

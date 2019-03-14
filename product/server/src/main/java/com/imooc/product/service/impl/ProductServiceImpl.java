@@ -10,7 +10,7 @@ import com.imooc.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.amqp.core.AmqpTemplate;
 import java.util.List;
 
 /**
@@ -21,6 +21,9 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductInfoRepository repository;
+
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @Override
     public ProductInfo findOne(String productId) {
@@ -76,8 +79,9 @@ public class ProductServiceImpl implements ProductService {
             productInfo.setProductStock(result);
 
             repository.save(productInfo);
+
+            //发送mq 消息
+            amqpTemplate.convertAndSend("productInfo", productInfo);
         }
     }
-
-
 }
