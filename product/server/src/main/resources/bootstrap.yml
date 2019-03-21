@@ -8,7 +8,29 @@ spring:
       discovery:
         enabled: true
         service-id: CONFIG
+  sleuth:
+    trace-id128: true
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://develop:9411
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    org.springframework.cloud.openfeign: debug
+
+#env: dev
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: develop
+#    password: JFKL2kljf$@2(nici23
+#    url: jdbc:mysql://10.19.16.3:50008/springboot?characterEncoding=utf-8&useSSL=false
+#  rabbitmq:
+#    host: develop
+#    port: 5672
+#    username: guest
+#    password: guest

@@ -1,0 +1,17 @@
+env: dev
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: develop
+    password: JFKL2kljf$@2(nici23
+    url: jdbc:mysql://10.19.16.3:50008/springboot?characterEncoding=utf-8&useSSL=false
+  rabbitmq:
+    host: develop
+    port: 5672
+    username: guest
+    password: guest
+  redis:
+    database: 0
+    host: 10.19.16.3
+    port: 6379
+    password: c74i7I93dV9ddqM2

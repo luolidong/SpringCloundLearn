@@ -1,8 +1,8 @@
 package com.imooc.product.service;
 
 
+import com.imooc.product.common.DecreaseStockInput;
 import com.imooc.product.dataobject.ProductInfo;
-import com.imooc.product.dto.CartDTO;
 
 import java.util.List;
 
@@ -23,5 +23,5 @@ public interface ProductService {
 //    void increaseStock(List<CartDTO> cartDTOList);
 //
     // 减库存
-    void decreaseStock(List<CartDTO> cartDTOList);
+    void decreaseStock(List<DecreaseStockInput> cartDTOList);
 }

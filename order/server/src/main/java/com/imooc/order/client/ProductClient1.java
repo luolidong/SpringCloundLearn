@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.FeignClient;
  */
 @FeignClient(name = "product11")
 public interface ProductClient1 {
-
+//
 //    @GetMapping("/msg")
 //    String productMsg();
 //
@@ -16,4 +16,7 @@ public interface ProductClient1 {
 //
 //    @PostMapping("/decreaseStock")
 //    void decreaseStock(@RequestBody List<CartDTO> cartDTOList);
+//
+//    @GetMapping("/product/test")
+//    String test(@RequestParam("name") String name);
 }

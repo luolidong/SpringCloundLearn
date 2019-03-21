@@ -1,6 +1,7 @@
 package com.imooc.order.controller;
 
 import com.imooc.order.VO.ResultVO;
+
 import com.imooc.order.dto.OrderDTO;
 import com.imooc.order.enums.ResultEnum;
 import com.imooc.order.exception.SellException;
@@ -8,13 +9,12 @@ import com.imooc.order.form.OrderForm;
 import com.imooc.order.ocnverter.OrderForm2OrderDTOConverter;
 import com.imooc.order.service.OrderService;
 import com.imooc.order.utils.ResultVOUtil;
+import com.imooc.product.client.ProductClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -29,6 +29,12 @@ import java.util.Map;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
+//    @Autowired
+//    private ProductClient productClient;
+
+    @Autowired
+    private ProductClient productClient;
 
     /**
      * 1.参数检验
@@ -52,6 +58,17 @@ public class OrderController {
         Map<String,String> map = new HashMap<>();
         map.put("orderId",createResult.getOrderId());
         return ResultVOUtil.success(map);
+    }
+
+    @PostMapping("/finish")
+    public ResultVO<OrderDTO> finish(@RequestParam("orderId") String orderId) {
+        return ResultVOUtil.success(orderService.finish(orderId));
+    }
+
+    @GetMapping("/test")
+    public String test(@RequestParam("name") String name) {
+
+        return productClient.test(name);
     }
 
 }

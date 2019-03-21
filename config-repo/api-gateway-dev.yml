@@ -1,0 +1,20 @@
+spring:
+  rabbitmq:
+    host: develop
+    port: 5672
+zuul:
+  ensitive-headers: 
+  routes:
+    myProduct:
+      path: /myProduct/**
+      serviceId: product
+      sensitiveHeaders:
+  ignored-patterns:
+    - /**/product/list
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+env:
+  dev

@@ -3,18 +3,15 @@ package com.imooc.product.controller;
 import com.imooc.product.VO.ProductInfoVO;
 import com.imooc.product.VO.ProductVO;
 import com.imooc.product.VO.ResultVO;
+import com.imooc.product.common.DecreaseStockInput;
 import com.imooc.product.dataobject.ProductCategory;
 import com.imooc.product.dataobject.ProductInfo;
-import com.imooc.product.dto.CartDTO;
 import com.imooc.product.service.CategoryService;
 import com.imooc.product.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +22,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @Slf4j
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
@@ -66,12 +64,24 @@ public class ProductController {
 
     @PostMapping("/listForOrder")
     public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         return productService.findList(productIdList);
     }
 
     @PostMapping("/decreaseStock")
-    public void decreaseStock(@RequestBody List<CartDTO> cartDTOList) {
-        log.info("carDTOlist: {}", cartDTOList);
-        productService.decreaseStock(cartDTOList);
+    public String decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
+        log.info("carDTOlist: {}", decreaseStockInputList);
+        productService.decreaseStock(decreaseStockInputList);
+        return "ok";
+    }
+
+    @GetMapping("/test")
+    public String test(@RequestParam("name") String name) {
+        return name;
     }
 }
